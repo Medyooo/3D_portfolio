@@ -1,15 +1,26 @@
-import { useRef, useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { lazy, Suspense, useRef, useState, useEffect } from 'react'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
 import emailjs from '@emailjs/browser'
 
 import { styles } from '../styles'
-import { EarthCanvas } from './canvas'
 import { SectionWrapper } from '../hoc'
+
+const LazyEarthCanvas = lazy(() =>
+  import('./canvas').then((m) => ({ default: m.EarthCanvas }))
+)
 import { slideIn } from '../utils/motion'
 import { useLanguage } from '../context/LanguageContext'
 import { t } from '../constants/translations'
+import {
+  sanitizeName,
+  sanitizeEmail,
+  sanitizeMessage,
+  validateContactForm,
+  SEND_COOLDOWN_MS,
+  LIMITS
+} from '../utils/contactForm'
 
-const Notification = ({ message, type, onClose }) => {
+const Notification = ({ message, type, onClose, closeAriaLabel = 'Fermer' }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       onClose()
@@ -35,7 +46,9 @@ const Notification = ({ message, type, onClose }) => {
         <p className='text-sm'>{message}</p>
       </div>
       <button
+        type='button'
         onClick={onClose}
+        aria-label={closeAriaLabel}
         className='text-white hover:text-gray-200 transition-colors'
       >
         <svg
@@ -59,14 +72,18 @@ const Notification = ({ message, type, onClose }) => {
 const Contact = () => {
   const { language } = useLanguage()
   const formRef = useRef()
+  const canvasRef = useRef(null)
+  const canvasInView = useInView(canvasRef, { once: true, amount: 0.2 })
   const [form, setForm] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
+    website: '' // honeypot : doit rester vide (anti-spam)
   })
 
   const [loading, setLoading] = useState(false)
   const [notification, setNotification] = useState(null)
+  const lastSendRef = useRef(0)
 
   const showNotification = (message, type) => {
     setNotification({ message, type })
@@ -79,59 +96,76 @@ const Contact = () => {
   const handleChange = (e) => {
     const { target } = e
     const { name, value } = target
-
-    setForm({
-      ...form,
-      [name]: value
-    })
+    if (name === 'name') setForm((f) => ({ ...f, name: sanitizeName(value) }))
+    else if (name === 'email') setForm((f) => ({ ...f, email: sanitizeEmail(value) }))
+    else if (name === 'message') setForm((f) => ({ ...f, message: sanitizeMessage(value) }))
+    else if (name === 'website') setForm((f) => ({ ...f, website: value }))
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    // Validation basique
-    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
-      showNotification(t(language, 'notifications.fillAll'), 'error')
+    // Honeypot : si rempli = bot → on simule le succès sans envoyer
+    if (form.website && form.website.trim() !== '') {
+      setForm((f) => ({ ...f, name: '', email: '', message: '', website: '' }))
+      showNotification(t(language, 'notifications.success'), 'success')
       return
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(form.email)) {
-      showNotification(t(language, 'notifications.invalidEmail'), 'error')
+    const validationErrors = validateContactForm(form)
+    if (validationErrors.length > 0) {
+      if (validationErrors.includes('email')) {
+        showNotification(t(language, 'notifications.invalidEmail'), 'error')
+      } else {
+        showNotification(t(language, 'notifications.fillAll'), 'error')
+      }
+      return
+    }
+
+    // Rate limit : pas d'envoi si dernier envoi il y a moins de 1 min
+    const now = Date.now()
+    if (now - lastSendRef.current < SEND_COOLDOWN_MS) {
+      showNotification(t(language, 'notifications.rateLimit'), 'error')
       return
     }
 
     setLoading(true)
 
+    const serviceId = import.meta.env.VITE_APP_EMAILJS_SERVICE_ID
+    const templateId = import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID
+    const publicKey = import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+
+    if (!serviceId || !templateId || !publicKey) {
+      setLoading(false)
+      showNotification(t(language, 'notifications.error'), 'error')
+      return
+    }
+
+    // L'adresse de destination est configurée UNIQUEMENT dans le template EmailJS (dashboard).
+    // Elle ne doit jamais apparaître dans le code frontend.
+    const templateParams = {
+      from_name: sanitizeName(form.name),
+      from_email: sanitizeEmail(form.email),
+      message: sanitizeMessage(form.message),
+      reply_to: sanitizeEmail(form.email)
+    }
+
     emailjs
-      .send(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-        {
-          from_name: form.name,
-          to_name: 'Mohamed Larbi EL BAIDI',
-          from_email: form.email,
-          to_email: 'arbielbaidi6@gmail.com',
-          message: form.message,
-          reply_to: form.email
-        },
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-      )
+      .send(serviceId, templateId, templateParams, publicKey)
       .then(
         () => {
+          lastSendRef.current = Date.now()
           setLoading(false)
           showNotification(t(language, 'notifications.success'), 'success')
-
           setForm({
             name: '',
             email: '',
-            message: ''
+            message: '',
+            website: ''
           })
         },
-        (error) => {
+        () => {
           setLoading(false)
-          console.error(error)
-
           showNotification(t(language, 'notifications.error'), 'error')
         }
       )
@@ -145,6 +179,7 @@ const Contact = () => {
             message={notification.message}
             type={notification.type}
             onClose={hideNotification}
+            closeAriaLabel={t(language, 'contact.closeLabel')}
           />
         )}
       </AnimatePresence>
@@ -157,16 +192,32 @@ const Contact = () => {
           className='flex-[0.75] bg-[#9F2808] p-8 rounded-2xl'
         >
           <p className={styles.sectionSubText}>{t(language, 'contact.subtitle')}</p>
-          <h3 className={styles.sectionHeadText}>{t(language, 'contact.title')}</h3>
+          <h2 id='contact-heading' className={styles.sectionHeadText}>{t(language, 'contact.title')}</h2>
 
           <form
+            aria-labelledby='contact-heading'
             ref={formRef}
             onSubmit={handleSubmit}
             className='mt-5 flex flex-col gap-8'
           >
-            <label className='flex flex-col'>
+            {/* Honeypot : champ invisible pour les humains, les bots le remplissent */}
+            <div className='absolute -left-[9999px] w-1 h-1 overflow-hidden' aria-hidden='true'>
+              <label htmlFor='contact-website'>Site web</label>
+              <input
+                id='contact-website'
+                type='text'
+                name='website'
+                value={form.website}
+                onChange={handleChange}
+                tabIndex={-1}
+                autoComplete='off'
+              />
+            </div>
+
+            <label htmlFor='contact-name' className='flex flex-col'>
               <span className='text-white font-medium mb-4'>{t(language, 'contact.yourName')}</span>
               <input
+                id='contact-name'
                 type='text'
                 name='name'
                 value={form.name}
@@ -174,12 +225,14 @@ const Contact = () => {
                 placeholder={t(language, 'contact.placeholderName')}
                 className='bg-primary py-4 px-6 placeholder:text-[#9F2808] text-[#9F2808] rounded-lg outline-none border-none font-medium focus:ring-2 focus:ring-secondary transition-all'
                 required
+                maxLength={LIMITS.MAX_NAME_LENGTH}
                 disabled={loading}
               />
             </label>
-            <label className='flex flex-col'>
+            <label htmlFor='contact-email' className='flex flex-col'>
               <span className='text-white font-medium mb-4'>{t(language, 'contact.yourEmail')}</span>
               <input
+                id='contact-email'
                 type='email'
                 name='email'
                 value={form.email}
@@ -187,12 +240,14 @@ const Contact = () => {
                 placeholder={t(language, 'contact.placeholderEmail')}
                 className='bg-primary py-4 px-6 placeholder:text-[#9F2808] text-[#9F2808] rounded-lg outline-none border-none font-medium focus:ring-2 focus:ring-secondary transition-all'
                 required
+                maxLength={LIMITS.MAX_EMAIL_LENGTH}
                 disabled={loading}
               />
             </label>
-            <label className='flex flex-col'>
+            <label htmlFor='contact-message' className='flex flex-col'>
               <span className='text-white font-medium mb-4'>{t(language, 'contact.yourMessage')}</span>
               <textarea
+                id='contact-message'
                 rows={7}
                 name='message'
                 value={form.message}
@@ -200,6 +255,7 @@ const Contact = () => {
                 placeholder={t(language, 'contact.placeholderMessage')}
                 className='bg-primary py-4 px-6 placeholder:text-[#9F2808] text-[#9F2808] rounded-lg outline-none border-none font-medium focus:ring-2 focus:ring-secondary transition-all resize-none'
                 required
+                maxLength={LIMITS.MAX_MESSAGE_LENGTH}
                 disabled={loading}
               />
             </label>
@@ -224,10 +280,19 @@ const Contact = () => {
         </motion.div>
 
         <motion.div
+          ref={canvasRef}
           variants={slideIn('right', 'tween', 0.2, 1)}
-          className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
+          className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px] min-h-[350px]'
         >
-          <EarthCanvas />
+          {canvasInView
+            ? (
+              <Suspense fallback={<div className='w-full h-full min-h-[350px] bg-primary/20 rounded-2xl' aria-hidden='true' />}>
+                <LazyEarthCanvas />
+              </Suspense>
+              )
+            : (
+              <div className='w-full h-full min-h-[350px] bg-primary/10 rounded-2xl' aria-hidden='true' />
+              )}
         </motion.div>
       </div>
     </>

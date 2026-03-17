@@ -38,7 +38,7 @@ const StudiesCard = ({ study }) => {
             <div>
                 <h3 className='text-white text-[24px] font-bold'>{study.title}</h3>
                 <p
-                    className='text-primary text-[16px] font-semibold'
+                    className='text-white text-[16px] font-semibold'
                     style={{ margin: 0 }}
                 >
                     {study.company_name}
@@ -48,7 +48,7 @@ const StudiesCard = ({ study }) => {
                 {study.points.map((point, index) => (
                     <li
                         key={`experience-point-${index}`}
-                        className='text-white-100 text-[14px] pl-1 tracking-wider'
+                        className='text-white text-[14px] pl-1 tracking-wider'
                     >
                         {point}
                     </li>

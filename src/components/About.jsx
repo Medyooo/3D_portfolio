@@ -10,16 +10,18 @@ import { useLanguage } from '../context/LanguageContext'
 import { t } from '../constants/translations'
 
 const ServiceCard = ({ index, title, icon }) => (
-  <Tilt className='xs:w-[250px] w-full'>
+  <Tilt
+    className='xs:w-[250px] w-full'
+    options={{ max: 25, scale: 1, speed: 120 }}
+  >
     <motion.div
-      variants={fadeIn('right', 'spring', index * 0.5, 0.75)}
+      variants={fadeIn('right', 'spring', index * 0.3, 1.2)}
       className='w-full orange-red-gradient p-[1px] rounded-[20px] shadow-card'
     >
       <div
-        options={{ max: 45, scale: 1, speed: 450 }}
         className='bg-[#9F2808] rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
       >
-        <img src={icon} alt='web-development' className='w-16 h-16 object-contain' />
+        <img src={icon} alt={title} className='w-24 h-24 sm:w-28 sm:h-28 object-contain' />
         <h3 className='text-white text-[20px] font-bold text-center'>{title}</h3>
       </div>
     </motion.div>
@@ -37,7 +39,7 @@ const About = () => {
 
       <motion.p
         variants={fadeIn('', '', 0.1, 1)}
-        className='mt-4 text-primary text-[17px] max-w-3xl leading-[30px]'
+        className='mt-4 text-white text-[17px] max-w-3xl leading-[30px]'
       >
         {t(language, 'about.paragraph')}
       </motion.p>

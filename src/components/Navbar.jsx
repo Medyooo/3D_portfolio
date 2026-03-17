@@ -83,14 +83,28 @@ const Navbar = () => {
               EN
             </button>
           </div>
-          <img
-            src={toggle ? close : menu}
-            alt='menu'
-            className='w-[28px] h-[28px] object-contain cursor-pointer'
+          <button
+            type='button'
             onClick={() => setToggle(!toggle)}
-          />
+            aria-expanded={toggle}
+            aria-controls='mobile-menu'
+            aria-label={toggle ? (language === 'fr' ? 'Fermer le menu' : 'Close menu') : (language === 'fr' ? 'Ouvrir le menu' : 'Open menu')}
+            className='p-1'
+          >
+            <img
+              src={toggle ? close : menu}
+              alt=''
+              className='w-[28px] h-[28px] object-contain'
+              aria-hidden='true'
+            />
+          </button>
 
-          <div className={`${!toggle ? 'hidden' : 'flex'} flex-col p-6 bg-black absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}>
+          <div
+            id='mobile-menu'
+            role='navigation'
+            aria-label={language === 'fr' ? 'Menu principal' : 'Main menu'}
+            className={`${!toggle ? 'hidden' : 'flex'} flex-col p-6 bg-black absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+          >
             <ul className='list-none'>
             {navLinks.map((link) => (
               <li

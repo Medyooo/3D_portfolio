@@ -4,6 +4,8 @@ import { motion } from 'framer-motion'
 
 import { github } from '../assets'
 import { fadeIn } from '../utils/motion'
+import { useLanguage } from '../context/LanguageContext'
+import { t } from '../constants/translations'
 
 const ProjectCard = ({
   index,
@@ -13,15 +15,16 @@ const ProjectCard = ({
   image,
   source_code_link
 }) => {
+  const { language } = useLanguage()
   const hasLink = Boolean(source_code_link)
 
   return (
-    <motion.div variants={fadeIn('up', 'spring', index * 0.5, 0.75)} className='h-full'>
+    <motion.div variants={fadeIn('up', 'spring', index * 0.3, 1.2)} className='h-full'>
       <Tilt
         options={{
-          max: 45,
+          max: 25,
           scale: 1,
-          speed: 450
+          speed: 120
         }}
         className='bg-[#9F2808] p-5 rounded-2xl sm:w-[360px] w-full h-full min-h-[480px] flex flex-col'
       >
@@ -44,23 +47,27 @@ const ProjectCard = ({
 
           {hasLink && (
             <div className='absolute inset-0 flex justify-end m-3 card-img_hover'>
-              <div
-                onClick={() => window.open(source_code_link, '_blank')}
+              <a
+                href={source_code_link}
+                target='_blank'
+                rel='noopener noreferrer'
                 className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
+                aria-label={name ? `${t(language, 'viewSource')} — ${name}` : t(language, 'viewSource')}
               >
                 <img
                   src={github}
-                  alt='source code'
+                  alt=''
                   className='w-1/2 h-1/2 object-contain'
+                  aria-hidden='true'
                 />
-              </div>
+              </a>
             </div>
           )}
         </div>
 
         <div className='mt-5 flex-shrink-0'>
           <h3 className='text-white font-bold text-[24px] line-clamp-2'>{name}</h3>
-          <p className='mt-2 text-primary text-[14px] line-clamp-3 min-h-[60px]'>{description}</p>
+          <p className='mt-2 text-white text-[14px] line-clamp-3 min-h-[60px]'>{description}</p>
         </div>
 
         {Array.isArray(tags) && tags.length > 0 && (

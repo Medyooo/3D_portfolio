@@ -1,12 +1,16 @@
-import { Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { Decal, Float, OrbitControls, Preload, useTexture } from '@react-three/drei';
-import CanvasLoader from '../Loader';
+import { Suspense } from 'react'
+import { Canvas } from '@react-three/fiber'
+import { Decal } from '@react-three/drei/core/Decal.js'
+import { Float } from '@react-three/drei/core/Float.js'
+import { OrbitControls } from '@react-three/drei/core/OrbitControls.js'
+import { Preload } from '@react-three/drei/core/Preload.js'
+import { useTexture } from '@react-three/drei/core/Texture.js'
+import CanvasLoader from '../Loader'
 
 const Ball = (props) => {
   const [decal] = useTexture([props.imgUrl]);
   return (
-    <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
+    <Float speed={1.8} rotationIntensity={0.4} floatIntensity={1.2} floatingRange={[-0.15, 0.15]}>
       <ambientLight intensity={0.25} />
       <directionalLight position={[0, 0, 0.05]} />
       <mesh castShadow receiveShadow scale={2.75}>

@@ -10,7 +10,8 @@ export const translations = {
     hero: {
       greeting: "Salut, c'est",
       name: 'Mohamed Larbi  EL BAIDI',
-      role: 'Développeur full-stack'
+      role: 'Développeur full-stack',
+      downloadCv: 'Télécharger mon CV'
     },
     about: {
       subtitle: 'Introduction',
@@ -30,6 +31,10 @@ export const translations = {
     studies: {
       subtitle: 'MON PARCOURS ACADÉMIQUE',
       title: 'Formations'
+    },
+    tech: {
+      subtitle: 'OUTILS & LANGAGES',
+      title: 'Stack technique'
     },
     certifications: {
       subtitle: 'Auto-formation & cours en ligne',
@@ -52,11 +57,14 @@ export const translations = {
       placeholderEmail: 'Quelle est votre adresse email ?',
       placeholderMessage: 'Que souhaitez-vous me dire ?',
       send: 'Envoyer',
-      sending: 'Envoi en cours...'
+      sending: 'Envoi en cours...',
+      closeLabel: 'Fermer la notification'
     },
+    viewSource: 'Voir le code source',
     notifications: {
       fillAll: 'Veuillez remplir tous les champs du formulaire.',
       invalidEmail: 'Veuillez entrer une adresse email valide.',
+      rateLimit: 'Veuillez patienter une minute avant de renvoyer un message.',
       success: 'Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.',
       error: "Une erreur est survenue lors de l'envoi. Veuillez réessayer ou me contacter directement à arbielbaidi6@gmail.com"
     }
@@ -72,7 +80,8 @@ export const translations = {
     hero: {
       greeting: "Hi, I'm",
       name: 'Mohamed Larbi  EL BAIDI',
-      role: 'Full-stack developer'
+      role: 'Full-stack developer',
+      downloadCv: 'Download my CV'
     },
     about: {
       subtitle: 'Introduction',
@@ -92,6 +101,10 @@ export const translations = {
     studies: {
       subtitle: 'MY ACADEMIC BACKGROUND',
       title: 'Education'
+    },
+    tech: {
+      subtitle: 'TOOLS & LANGUAGES',
+      title: 'Technical stack'
     },
     certifications: {
       subtitle: 'Self-training & online courses',
@@ -114,11 +127,14 @@ export const translations = {
       placeholderEmail: "What's your email address?",
       placeholderMessage: 'What would you like to say?',
       send: 'Send',
-      sending: 'Sending...'
+      sending: 'Sending...',
+      closeLabel: 'Close notification'
     },
+    viewSource: 'View source code',
     notifications: {
       fillAll: 'Please fill in all form fields.',
       invalidEmail: 'Please enter a valid email address.',
+      rateLimit: 'Please wait a minute before sending another message.',
       success: 'Message sent successfully! I will get back to you as soon as possible.',
       error: 'An error occurred while sending. Please try again or contact me directly at arbielbaidi6@gmail.com'
     }

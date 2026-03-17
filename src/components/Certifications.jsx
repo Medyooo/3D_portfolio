@@ -23,7 +23,7 @@ const Certifications = () => {
         {certifications.map((certification, index) => {
           const item = tr.list[index]
           return (
-            <div key={`certification-${index}`} className='sm:w-[360px] w-full'>
+            <article key={`certification-${index}`} className='sm:w-[360px] w-full'>
               <ProjectCard
                 index={index}
                 name={item?.name ?? certification.name}
@@ -32,7 +32,7 @@ const Certifications = () => {
                 source_code_link={certification.source_code_link}
                 tags={certification.tags || []}
               />
-            </div>
+            </article>
           )
         })}
       </div>
