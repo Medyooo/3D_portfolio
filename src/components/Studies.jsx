@@ -64,8 +64,8 @@ const Studies = () => {
     return (
         <>
             <motion.div variants={textVariant()}>
-                <p className={`${styles.sectionSubText} text-center`}>{t(language, 'studies.subtitle')}</p>
-                <h2 className={`${styles.sectionHeadText} text-center`}>{t(language, 'studies.title')}</h2>
+                <p className={styles.sectionSubText}>{t(language, 'studies.subtitle')}</p>
+                <h2 className={styles.sectionHeadText}>{t(language, 'studies.title')}</h2>
             </motion.div>
 
             <div className='mt-20 flex flex-col'>

@@ -14,9 +14,9 @@ const Certifications = () => {
   const tr = translations[language].certifications
   return (
     <>
-      <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText}`}>{tr.subtitle}</p>
-        <h2 className={`${styles.sectionHeadText}`}>{tr.title}</h2>
+      <motion.div variants={textVariant()} className='flex w-full flex-col items-center text-center'>
+        <p className={styles.sectionSubText}>{tr.subtitle}</p>
+        <h2 className={styles.sectionHeadText}>{tr.title}</h2>
       </motion.div>
 
       <div className='mt-20 flex flex-wrap gap-7 items-stretch'>

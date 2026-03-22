@@ -9,8 +9,8 @@ const TechHeading = () => {
   const { language } = useLanguage()
   return (
     <motion.div variants={textVariant()}>
-      <p className={`${styles.sectionSubText} text-center`}>{t(language, 'tech.subtitle')}</p>
-      <h2 className={`${styles.sectionHeadText} text-center`}>{t(language, 'tech.title')}</h2>
+      <p className={styles.sectionSubText}>{t(language, 'tech.subtitle')}</p>
+      <h2 className={styles.sectionHeadText}>{t(language, 'tech.title')}</h2>
     </motion.div>
   )
 }

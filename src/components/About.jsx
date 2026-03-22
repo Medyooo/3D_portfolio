@@ -32,9 +32,9 @@ const About = () => {
   const { language } = useLanguage()
   return (
     <>
-      <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>{t(language, 'about.subtitle')}</p>
-        <h2 className={styles.sectionHeadText}>{t(language, 'about.title')}</h2>
+      <motion.div variants={textVariant()} className='flex w-full flex-col items-start text-left'>
+        <p className={`${styles.sectionSubText} !text-left`}>{t(language, 'about.subtitle')}</p>
+        <h2 className={`${styles.sectionHeadText} !text-left`}>{t(language, 'about.title')}</h2>
       </motion.div>
 
       <motion.p

@@ -9,9 +9,9 @@ import ProjectCard from './ProjectCard'
 const Works = () => {
   return (
     <>
-      <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} `}>Mes réalisations</p>
-        <h2 className={`${styles.sectionHeadText}`}>Projets.</h2>
+      <motion.div variants={textVariant()} className='w-full text-center'>
+        <p className={styles.sectionSubText}>Mes réalisations</p>
+        <h2 className={styles.sectionHeadText}>Projets</h2>
       </motion.div>
 
       <div className='mt-20 flex flex-wrap gap-7'>

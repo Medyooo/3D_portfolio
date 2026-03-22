@@ -144,10 +144,10 @@ const Contact = () => {
     // L'adresse de destination est configurée UNIQUEMENT dans le template EmailJS (dashboard).
     // Elle ne doit jamais apparaître dans le code frontend.
     const templateParams = {
-      from_name: sanitizeName(form.name),
-      from_email: sanitizeEmail(form.email),
-      message: sanitizeMessage(form.message),
-      reply_to: sanitizeEmail(form.email)
+      from_name: sanitizeName(form.name).trim(),
+      from_email: sanitizeEmail(form.email).trim(),
+      message: sanitizeMessage(form.message).trim(),
+      reply_to: sanitizeEmail(form.email).trim()
     }
 
     emailjs
@@ -191,8 +191,10 @@ const Contact = () => {
           variants={slideIn('left', 'tween', 0.2, 1)}
           className='flex-[0.75] bg-[#9F2808] p-8 rounded-2xl'
         >
-          <p className={styles.sectionSubText}>{t(language, 'contact.subtitle')}</p>
-          <h2 id='contact-heading' className={styles.sectionHeadText}>{t(language, 'contact.title')}</h2>
+          <div className='w-full text-center'>
+            <p className={styles.sectionSubText}>{t(language, 'contact.subtitle')}</p>
+            <h2 id='contact-heading' className={styles.sectionHeadText}>{t(language, 'contact.title')}</h2>
+          </div>
 
           <form
             aria-labelledby='contact-heading'

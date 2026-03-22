@@ -4,7 +4,7 @@ const MAX_NAME_LENGTH = 100
 const MAX_EMAIL_LENGTH = 254
 const MAX_MESSAGE_LENGTH = 5000
 
-/** Supprime les balises HTML et limite la longueur */
+/** Supprime les balises HTML (sans trim : le trim est réservé à la validation / l’envoi pour ne pas bloquer les espaces pendant la saisie) */
 function stripHtml (str) {
   if (typeof str !== 'string') return ''
   return str
@@ -14,26 +14,24 @@ function stripHtml (str) {
     .replace(/&amp;/g, '&')
     .replace(/&#x[\da-fA-F]+;/g, '')
     .replace(/&#\d+;/g, '')
-    .trim()
 }
 
-/** Sanitize le nom : supprime le HTML, garde lettres (dont accents), espaces, tirets, apostrophes */
+/** Sanitize le nom : supprime le HTML et caractères dangereux (pas de trim ici pour autoriser les espaces pendant la saisie) */
 export function sanitizeName (value) {
   const cleaned = stripHtml(value)
-  const safe = cleaned.replace(/[<>\"\\\x00-\x1F]/g, '').trim()
+  const safe = cleaned.replace(/[<>\"\\\x00-\x1F]/g, '')
   return safe.slice(0, MAX_NAME_LENGTH)
 }
 
-/** Garde un email valide, longueur max */
+/** Longueur max ; pas de trim à chaque frappe (trim à la validation / envoi) */
 export function sanitizeEmail (value) {
   if (typeof value !== 'string') return ''
-  const cleaned = value.trim().slice(0, MAX_EMAIL_LENGTH)
-  return cleaned
+  return value.slice(0, MAX_EMAIL_LENGTH)
 }
 
-/** Sanitize le message (pas de HTML, longueur max) */
+/** Sanitize le message (pas de HTML, longueur max ; espaces et retours ligne conservés pendant la saisie) */
 export function sanitizeMessage (value) {
-  const cleaned = stripHtml(value).replace(/\s+/g, ' ').trim()
+  const cleaned = stripHtml(value)
   return cleaned.slice(0, MAX_MESSAGE_LENGTH)
 }
 
