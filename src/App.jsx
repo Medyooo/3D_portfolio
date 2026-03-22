@@ -11,9 +11,10 @@ import {
   Certifications
 } from './components'
 import { SectionWrapper } from './hoc'
+import TechHeading from './components/TechHeading'
 
-const LazyTechContent = lazy(() =>
-  import('./components/Tech').then((m) => ({ default: m.TechContent }))
+const LazyTechBallGrid = lazy(() =>
+  import('./components/Tech').then((m) => ({ default: m.TechBallGrid }))
 )
 
 function TechWithViewport () {
@@ -21,6 +22,7 @@ function TechWithViewport () {
   const inView = useInView(ref, { once: true, amount: 0.05 })
   return (
     <>
+      <TechHeading />
       <span ref={ref} className='absolute top-0 left-0 w-px h-px overflow-hidden' aria-hidden='true' />
       {inView
         ? (
@@ -31,7 +33,7 @@ function TechWithViewport () {
               </div>
             }
           >
-            <LazyTechContent />
+            <LazyTechBallGrid />
           </Suspense>
           )
         : (

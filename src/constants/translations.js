@@ -16,7 +16,7 @@ export const translations = {
     about: {
       subtitle: 'Introduction',
       title: 'À propos.',
-      paragraph: "Ingénieur en développement logiciel spécialisé en Full-Stack, je conçois et développe des applications web modernes, performantes et maintenables. En alternance chez Enedis Lab, je participe à la conception, au développement et à la sécurisation de solutions utilisées par les équipes métiers, en intervenant sur l'ensemble du cycle de vie logiciel : analyse des besoins, architecture, développement front-end et back-end, tests automatisés, intégration continue et déploiement. Rigoureux et orienté qualité, j'accorde une importance particulière aux bonnes pratiques, à la sécurité applicative et à la fiabilité des solutions livrées."
+      paragraph: "Développeur logiciel en ingénierie informatique, spécialisé en Full-Stack, je conçois et développe des applications web modernes, performantes et maintenables. En alternance chez Enedis Lab, je participe à la conception, au développement et à la sécurisation de solutions utilisées par les équipes métiers, en intervenant sur l'ensemble du cycle de vie logiciel : analyse des besoins, architecture, développement front-end et back-end, tests automatisés, intégration continue et déploiement. Rigoureux et orienté qualité, j'accorde une importance particulière aux bonnes pratiques, à la sécurité applicative et à la fiabilité des solutions livrées."
     },
     services: {
       fullstack: 'Full-stack',
@@ -40,6 +40,7 @@ export const translations = {
       subtitle: 'Auto-formation & cours en ligne',
       title: 'Certifications.',
       list: [
+        { name: 'JAVA INTERMEDIATE', description: 'Certification SoloLearn - Java intermédiaire.' },
         { name: 'JAVASCRIPT INTERMEDIATE', description: 'Certification SoloLearn - Auto-formation en JavaScript.' },
         { name: 'SQL INTERMEDIATE', description: 'Certification SoloLearn - Maîtrise des bases SQL.' },
         { name: 'PHP INTERMEDIATE', description: 'Certification SoloLearn - Programmation PHP.' },
@@ -86,7 +87,7 @@ export const translations = {
     about: {
       subtitle: 'Introduction',
       title: 'About.',
-      paragraph: 'Software development engineer specialized in Full-Stack, I design and develop modern, performant and maintainable web applications. As an apprentice at Enedis Lab, I contribute to the design, development and securing of solutions used by business teams, covering the full software lifecycle: requirements analysis, architecture, front-end and back-end development, automated testing, continuous integration and deployment. Thorough and quality-oriented, I pay particular attention to best practices, application security and the reliability of delivered solutions.'
+      paragraph: 'Software developer in computer engineering, specialized in Full-Stack, I design and develop modern, performant and maintainable web applications. As an apprentice at Enedis Lab, I contribute to the design, development and securing of solutions used by business teams, covering the full software lifecycle: requirements analysis, architecture, front-end and back-end development, automated testing, continuous integration and deployment. Thorough and quality-oriented, I pay particular attention to best practices, application security and the reliability of delivered solutions.'
     },
     services: {
       fullstack: 'Full-stack',
@@ -110,6 +111,7 @@ export const translations = {
       subtitle: 'Self-training & online courses',
       title: 'Certifications.',
       list: [
+        { name: 'JAVA INTERMEDIATE', description: 'SoloLearn Certification - Java Intermediate.' },
         { name: 'JAVASCRIPT INTERMEDIATE', description: 'SoloLearn Certification - JavaScript self-training.' },
         { name: 'SQL INTERMEDIATE', description: 'SoloLearn Certification - SQL fundamentals.' },
         { name: 'PHP INTERMEDIATE', description: 'SoloLearn Certification - PHP programming.' },

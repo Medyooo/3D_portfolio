@@ -18,6 +18,7 @@ import mds from './mdslogo.webp'
 import epsi from './epsi.png'
 import anssi from './anssi.jpg'
 import jssl from './sololearnjs.jpg'
+import javasl from './javaintermediate.png'
 import phpsl from './phpsl.png'
 import sqlsl from './sqlsl.jpg'
 import agile from './agile.png'
@@ -73,6 +74,7 @@ export {
   wordpress,
   vuejs,
   jssl,
+  javasl,
   postgresql,
   symfony,
   agile,

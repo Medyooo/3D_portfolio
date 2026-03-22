@@ -2,8 +2,9 @@ import {
   puzzle,
   computer,
   linkicon,
-    jssl,
-    anssi,
+  jssl,
+  javasl,
+  anssi,
   rocket,
   javascript,
   typescript,
@@ -131,7 +132,7 @@ const technologies = [
 
 const experiences = [
   {
-    title: 'Ingénieur Développement Logiciel / Full-Stack & DevSecOps (Alternance)',
+    title: 'Développeur logiciel / Full-Stack & DevSecOps (Alternance)',
     company_name: 'Enedis Lab — Nantes',
     icon: enedis,
     iconBg: '#ffff',
@@ -218,7 +219,7 @@ const studies = [
 
 const experiencesEn = [
   {
-    title: 'Software Development Engineer / Full-Stack & DevSecOps (Apprenticeship)',
+    title: 'Software Developer / Full-Stack & DevSecOps (Apprenticeship)',
     company_name: 'Enedis Lab — Nantes',
     icon: enedis,
     iconBg: '#ffff',
@@ -301,6 +302,12 @@ const studiesEn = [
 ]
 
 const certifications = [
+  {
+    name: 'JAVA INTERMEDIATE',
+    description: 'Certification SoloLearn - Java intermédiaire.',
+    image: javasl,
+    source_code_link: ''
+  },
   {
     name: 'JAVASCRIPT INTERMEDIATE',
     description: 'Certification SoloLearn - Auto-formation en JavaScript.',
