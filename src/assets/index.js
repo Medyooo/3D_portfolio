@@ -22,6 +22,7 @@ import javasl from './javaintermediate.png'
 import phpsl from './phpsl.png'
 import sqlsl from './sqlsl.jpg'
 import agile from './agile.png'
+import mohamedPortrait from './mohamed-portrait.png'
 
 
 
@@ -70,6 +71,7 @@ import jobit from './jobit.png'
 import tripguide from './tripguide.png'
 
 export {
+  mohamedPortrait,
   bootstrap,
   wordpress,
   vuejs,
