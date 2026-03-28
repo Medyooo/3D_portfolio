@@ -8,7 +8,7 @@ export const translations = {
       contact: 'Contact'
     },
     hero: {
-      greeting: "Salut, c'est",
+      greeting: 'Bonjour, je suis',
       name: 'Mohamed Larbi  EL BAIDI',
       role: 'Développeur full-stack',
       downloadCv: 'Télécharger mon CV'

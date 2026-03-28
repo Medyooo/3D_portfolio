@@ -26,7 +26,7 @@ const ProjectCard = ({
           scale: 1,
           speed: 120
         }}
-        className='bg-[#9F2808] p-5 rounded-2xl sm:w-[360px] w-full h-full min-h-[480px] flex flex-col'
+        className='bg-[#9F2808] p-5 rounded-2xl sm:w-[360px] w-full h-full min-h-[min(480px,85vh)] sm:min-h-[480px] flex flex-col'
       >
         <div className='relative w-full h-[230px] flex-shrink-0'>
           {image
