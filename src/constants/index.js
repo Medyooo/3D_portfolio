@@ -165,7 +165,7 @@ const experiences = [
     company_name: 'Pi Marketing — Distanciel',
     icon: pi,
     iconBg: '#ffff',
-    date: 'Avril 2023 – Juin 2024',
+    date: 'Avril 2023 – Juin 2023',
     points: [
       'Développement et personnalisation de sites e-commerce avec Laravel, WordPress et WooCommerce.',
       'Intégration front-end en HTML, CSS, JavaScript.',
@@ -252,7 +252,7 @@ const experiencesEn = [
     company_name: 'Pi Marketing — Remote',
     icon: pi,
     iconBg: '#ffff',
-    date: 'April 2023 – June 2024',
+    date: 'April 2023 – June 2023',
     points: [
       'Development and customization of e-commerce sites with Laravel, WordPress and WooCommerce.',
       'Front-end integration in HTML, CSS, JavaScript.',
