@@ -35,7 +35,10 @@ export const translations = {
     },
     tech: {
       subtitle: 'OUTILS & LANGAGES',
-      title: 'Stack technique'
+      title: 'Stack technique',
+      frontend: 'Frontend',
+      backend: 'Backend & Base de données',
+      cicd: 'CI/CD & DevOps'
     },
     certifications: {
       subtitle: 'Auto-formation & cours en ligne',
@@ -107,7 +110,10 @@ export const translations = {
     },
     tech: {
       subtitle: 'TOOLS & LANGUAGES',
-      title: 'Technical stack'
+      title: 'Technical stack',
+      frontend: 'Frontend',
+      backend: 'Backend & Databases',
+      cicd: 'CI/CD & DevOps'
     },
     certifications: {
       subtitle: 'Self-training & online courses',

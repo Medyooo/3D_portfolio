@@ -14,9 +14,9 @@ import {
   mongodb,
   git,
   springboot,
-    agile,
-    sqlsl,
-    phpsl,
+  agile,
+  sqlsl,
+  phpsl,
   docker,
   vuejs,
   postgresql,
@@ -30,7 +30,7 @@ import {
   java,
   enedis,
   jdm,
-  pi, ubo,mds,epsi
+  pi, ubo, mds, epsi
 } from '../assets'
 
 export const navLinks = [
@@ -123,11 +123,7 @@ const technologies = [
   {
     name: 'python',
     icon: python
-  },
-
-
- 
- 
+  }
 ]
 
 const experiences = [

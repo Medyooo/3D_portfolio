@@ -1,6 +1,4 @@
-import { lazy, Suspense, useRef } from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import { useInView } from 'framer-motion'
 import {
   About,
   Contact,
@@ -8,42 +6,9 @@ import {
   Hero,
   Navbar,
   Studies,
-  Certifications
+  Certifications,
+  Tech
 } from './components'
-import { SectionWrapper } from './hoc'
-import TechHeading from './components/TechHeading'
-
-const LazyTechBallGrid = lazy(() =>
-  import('./components/Tech').then((m) => ({ default: m.TechBallGrid }))
-)
-
-function TechWithViewport () {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, amount: 0.05 })
-  return (
-    <>
-      <TechHeading />
-      <span ref={ref} className='absolute top-0 left-0 w-px h-px overflow-hidden' aria-hidden='true' />
-      {inView
-        ? (
-          <Suspense
-            fallback={
-              <div className='min-h-[420px] flex items-center justify-center' aria-hidden='true'>
-                <span className='text-white/50 text-sm'>Chargement…</span>
-              </div>
-            }
-          >
-            <LazyTechBallGrid />
-          </Suspense>
-          )
-        : (
-          <div className='min-h-[420px]' aria-hidden='true' />
-          )}
-    </>
-  )
-}
-
-const TechSection = SectionWrapper(TechWithViewport, 'tech')
 
 const App = () => {
   return (
@@ -63,7 +28,7 @@ const App = () => {
         <main id='main-content'>
           <About />
           <Experience />
-          <TechSection />
+          <Tech />
           <Studies />
           <Certifications />
           <div className='relative z-0'>
