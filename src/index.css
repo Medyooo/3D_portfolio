@@ -235,3 +235,25 @@ body {
       -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em #ffffff;
   }
 }
+
+/* Swiper — projets personnels */
+.personal-project-swiper .swiper-slide {
+  height: auto;
+  box-sizing: border-box;
+}
+
+.personal-project-swiper .swiper-pagination {
+  bottom: 0.35rem !important;
+}
+
+.personal-project-swiper .swiper-pagination-bullet {
+  width: 0.35rem;
+  height: 0.35rem;
+  background: rgba(255, 255, 255, 0.32);
+  opacity: 1;
+}
+
+.personal-project-swiper .swiper-pagination-bullet-active {
+  background: #fcc986;
+  transform: scale(1.12);
+}

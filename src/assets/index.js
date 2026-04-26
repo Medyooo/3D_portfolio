@@ -70,6 +70,27 @@ import carrent from './carrent.png'
 import jobit from './jobit.png'
 import tripguide from './tripguide.png'
 
+import medtradingLogin from './projects/medtrading-login.png'
+import medtradingDashboard from './projects/medtrading-dashboard.png'
+import medtradingTrades from './projects/medtrading-trades.png'
+import medtradingNouveauTrade from './projects/medtrading-nouveau-trade.png'
+import medtradingPaires from './projects/medtrading-paires.png'
+import medtradingAnalyse from './projects/medtrading-analyse.png'
+
+import secoursplusLanding from './projects/secoursplus-landing.png'
+import secoursplusCours from './projects/secoursplus-cours.png'
+import secoursplusQuiz from './projects/secoursplus-quiz.png'
+import secoursplusFormations from './projects/secoursplus-formations.png'
+import secoursplusTableauDeBord from './projects/secoursplus-tableau-de-bord.png'
+
+import vtechnoLogin from './projects/vtechno-login.png'
+import vtechnoDashboard from './projects/vtechno-dashboard.png'
+import vtechnoSourcesRss from './projects/vtechno-sources-rss.png'
+
+import ecosortLogin from './projects/ecosort-login.png'
+import ecosortPremiereConnexion from './projects/ecosort-premiere-connexion.png'
+import ecosortTableauDeBord from './projects/ecosort-tableau-de-bord.png'
+
 export {
   mohamedPortrait,
   bootstrap,
@@ -124,6 +145,23 @@ export {
   carrent,
   jobit,
   tripguide,
+  medtradingLogin,
+  medtradingDashboard,
+  medtradingTrades,
+  medtradingNouveauTrade,
+  medtradingPaires,
+  medtradingAnalyse,
+  secoursplusLanding,
+  secoursplusCours,
+  secoursplusQuiz,
+  secoursplusFormations,
+  secoursplusTableauDeBord,
+  vtechnoLogin,
+  vtechnoDashboard,
+  vtechnoSourcesRss,
+  ecosortLogin,
+  ecosortPremiereConnexion,
+  ecosortTableauDeBord,
   linkicon,
   computer,
   puzzle,

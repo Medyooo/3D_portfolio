@@ -3,6 +3,7 @@ export const translations = {
     nav: {
       about: 'À propos',
       experiences: 'Expérience',
+      projects: 'Projets perso',
       studies: 'Formation',
       certification: 'Certifications',
       contact: 'Contact'
@@ -39,6 +40,74 @@ export const translations = {
       frontend: 'Frontend',
       backend: 'Backend & Base de données',
       cicd: 'CI/CD & DevOps'
+    },
+    personalProjects: {
+      subtitle: 'RÉALISATIONS & EXPÉRIMENTATIONS',
+      title: 'Projets personnels',
+      stackLabel: 'Stack',
+      galleryLabel: 'Aperçus',
+      clickToEnlarge: 'Cliquer pour agrandir',
+      slidePrev: 'Image précédente',
+      slideNext: 'Image suivante',
+      closeImageZoom: 'Fermer l’agrandissement',
+      viewProject: 'Voir le projet',
+      categoryLabel: 'Domaine',
+      status: {
+        in_progress: 'En cours',
+        completed: 'Terminé',
+        planned: 'À venir'
+      },
+      itemsById: {
+        medtrading: {
+          name: 'MedTrading',
+          category: 'Fintech',
+          description:
+            'Application de journalisation des trades et de suivi de performance : authentification, tableau de bord (P&L cumulé, win rate, paires), journal des positions, création de trades avec calcul automatique du R/R, catalogue d’instruments et vue analyse avec intégration TradingView. Front React, Redux, TypeScript, Vite et Tailwind CSS ; back Java / Spring Boot avec Spring Security, persistance PostgreSQL, conteneurisation Docker, API REST, architecture n-tiers et multi-couche.',
+          imageAlt: 'MedTrading — page de connexion',
+          galleryAlts: [
+            'Tableau de bord',
+            'Journal des trades',
+            'Formulaire nouveau trade',
+            'Catalogue des paires (mode sombre)',
+            'Analyse graphique (mode sombre)'
+          ]
+        },
+        secoursplus: {
+          name: 'Secours+',
+          category: 'E-learning',
+          description:
+            'Plateforme e-learning de formation aux premiers secours : parcours, catalogue avec filtres et offres premium, fiches cours avec suivi de progression, quiz d’évaluation (timer, vies, score) et tableau de bord utilisateur. Mise en avant d’un parcours en réalité virtuelle pour des gestes sauveurs immersifs. Front Next.js, TypeScript et Tailwind CSS ; back Spring Boot avec Spring Security, PostgreSQL, Docker, API REST, architecture n-tiers et approche DDD (Domain-Driven Design).',
+          imageAlt: 'Secours+ — page d’accueil',
+          galleryAlts: [
+            'Détail d’un cours',
+            'Quiz d’évaluation',
+            'Catalogue des formations',
+            'Tableau de bord utilisateur'
+          ]
+        },
+        vtechno: {
+          name: 'V-Techno',
+          category: 'Veille tech',
+          description:
+            'Dashboard de veille technologique conçu dans le cadre d\'un projet académique à l\'EPSI. Développement de l’interface web (React, Vite, Tailwind) connectée aux flux automatisés par l’équipe, pour centraliser et visualiser des actualités en temps réel. Authentification et données via Firebase / Firestore, dans l’écosystème Google Cloud.',
+          imageAlt: 'V-Techno — page de connexion',
+          galleryAlts: [
+            'Tableau de bord — suivi d’articles',
+            'Gestion des sources RSS'
+          ]
+        },
+        ecosort: {
+          name: 'EcoSort',
+          category: 'RSE & IoT',
+          description:
+            'Application web de gestion administrative pour une poubelle connectée intelligente. Le tableau de bord permet aux entreprises de suivre les statistiques de tri des déchets, de visualiser les courbes d’évolution, de gérer les employés et de consulter le classement gamifié des utilisateurs. Projet académique MyDigitalSchool.',
+          imageAlt: 'EcoSort — connexion',
+          galleryAlts: [
+            'Première configuration',
+            'Tableau de bord — statistiques et classement'
+          ]
+        }
+      }
     },
     certifications: {
       subtitle: 'Auto-formation & cours en ligne',
@@ -78,6 +147,7 @@ export const translations = {
     nav: {
       about: 'About',
       experiences: 'Experience',
+      projects: 'Side projects',
       studies: 'Education',
       certification: 'Certifications',
       contact: 'Contact'
@@ -114,6 +184,74 @@ export const translations = {
       frontend: 'Frontend',
       backend: 'Backend & Databases',
       cicd: 'CI/CD & DevOps'
+    },
+    personalProjects: {
+      subtitle: 'BUILD & EXPERIMENTATION',
+      title: 'Personal projects',
+      stackLabel: 'Stack',
+      galleryLabel: 'Screenshots',
+      clickToEnlarge: 'Click to enlarge',
+      slidePrev: 'Previous image',
+      slideNext: 'Next image',
+      closeImageZoom: 'Close enlarged image',
+      viewProject: 'View project',
+      categoryLabel: 'Domain',
+      status: {
+        in_progress: 'In progress',
+        completed: 'Completed',
+        planned: 'Planned'
+      },
+      itemsById: {
+        medtrading: {
+          name: 'MedTrading',
+          category: 'Fintech',
+          description:
+            'Trade journaling and performance app: secure sign-in, dashboard (cumulative P&L, win rate, pairs), trade log, trade creation with automatic R/R calculation, instrument catalog and analysis view with TradingView integration. React, Redux, TypeScript, Vite, and Tailwind CSS on the front end; Java / Spring Boot with Spring Security, PostgreSQL, Docker, REST API, n-tier layered architecture on the backend.',
+          imageAlt: 'MedTrading — sign-in',
+          galleryAlts: [
+            'Dashboard',
+            'Trade log',
+            'New trade form',
+            'Pairs catalog (dark mode)',
+            'Chart analysis (dark mode)'
+          ]
+        },
+        secoursplus: {
+          name: 'Secours+',
+          category: 'E-learning',
+          description:
+            'E-learning platform for first aid training: learning paths, searchable catalog with premium courses, course pages with progress, timed evaluation quiz (lives, points, score) and user dashboard. Marketing and flows highlight an immersive virtual reality path for life-saving gestures. Next.js, TypeScript, and Tailwind CSS on the front end; Spring Boot with Spring Security, PostgreSQL, Docker, REST API, n-tier architecture, domain-driven design (DDD) on the backend.',
+          imageAlt: 'Secours+ — landing',
+          galleryAlts: [
+            'Course page',
+            'Evaluation quiz',
+            'Training catalog',
+            'User dashboard'
+          ]
+        },
+        vtechno: {
+          name: 'V-Techno',
+          category: 'Tech watch',
+          description:
+            'Technology watch dashboard for an academic project at EPSI. Web UI (React, Vite, Tailwind) I built on top of the team’s automated feed pipeline to centralize and view tech news in real time. Authentication and data through Firebase and Firestore on Google Cloud.',
+          imageAlt: 'V-Techno — sign-in',
+          galleryAlts: [
+            'Dashboard — article feed',
+            'RSS sources'
+          ]
+        },
+        ecosort: {
+          name: 'EcoSort',
+          category: 'Sustainability & IoT',
+          description:
+            'Web app for the admin side of a smart connected waste bin. The dashboard helps companies track sorting statistics, view trend charts, manage team members, and browse a gamified user leaderboard. Academic project at MyDigitalSchool.',
+          imageAlt: 'EcoSort — login',
+          galleryAlts: [
+            'First-time setup',
+            'Dashboard — stats and ranking'
+          ]
+        }
+      }
     },
     certifications: {
       subtitle: 'Self-training & online courses',

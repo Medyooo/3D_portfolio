@@ -27,6 +27,23 @@ import {
   carrent,
   jobit,
   tripguide,
+  medtradingDashboard,
+  medtradingLogin,
+  medtradingTrades,
+  medtradingNouveauTrade,
+  medtradingPaires,
+  medtradingAnalyse,
+  secoursplusLanding,
+  secoursplusCours,
+  secoursplusQuiz,
+  secoursplusFormations,
+  secoursplusTableauDeBord,
+  vtechnoLogin,
+  vtechnoDashboard,
+  vtechnoSourcesRss,
+  ecosortLogin,
+  ecosortPremiereConnexion,
+  ecosortTableauDeBord,
   java,
   enedis,
   jdm,
@@ -41,6 +58,10 @@ export const navLinks = [
   {
     id: 'experiences',
     title: 'Expérience'
+  },
+  {
+    id: 'projects',
+    title: 'Projets perso'
   },
   {
     id: 'studies',
@@ -466,6 +487,95 @@ const projects = [
   }
 ]
 
+const personalProjectsMeta = [
+  {
+    id: 'medtrading',
+    image: medtradingLogin,
+    gallery: [
+      medtradingDashboard,
+      medtradingTrades,
+      medtradingNouveauTrade,
+      medtradingPaires,
+      medtradingAnalyse
+    ],
+    /** Dimensions natives des captures (viewport app) — ratio pour mise en page */
+    preview: { width: 1000, height: 541 },
+    stack: [
+      'React',
+      'Redux',
+      'TypeScript',
+      'Vite',
+      'Tailwind CSS',
+      'Spring Boot',
+      'Spring Security',
+      'Java',
+      'PostgreSQL',
+      'Docker',
+      'API REST',
+      'Architecture n-tiers'
+    ],
+    status: 'in_progress',
+    link: 'https://github.com/Medyooo/medtrading',
+    icon: 'trading'
+  },
+  {
+    id: 'secoursplus',
+    image: secoursplusLanding,
+    gallery: [
+      secoursplusCours,
+      secoursplusQuiz,
+      secoursplusFormations,
+      secoursplusTableauDeBord
+    ],
+    preview: { width: 1280, height: 720 },
+    stack: [
+      'Next.js',
+      'TypeScript',
+      'Tailwind CSS',
+      'Spring Boot',
+      'Spring Security',
+      'Java',
+      'PostgreSQL',
+      'Docker',
+      'API REST',
+      'Architecture n-tiers',
+      'DDD',
+      'Web VR / immersive'
+    ],
+    status: 'in_progress',
+    link: 'https://github.com/Medyooo/secoursplus',
+    icon: 'secours'
+  },
+  {
+    id: 'vtechno',
+    image: vtechnoLogin,
+    gallery: [vtechnoDashboard, vtechnoSourcesRss],
+    preview: { width: 1280, height: 720 },
+    stack: [
+      'React',
+      'JavaScript',
+      'Vite',
+      'Tailwind CSS',
+      'Firebase',
+      'Firestore',
+      'Google Cloud'
+    ],
+    status: 'completed',
+    link: 'https://github.com/Medyooo/v-techno',
+    icon: 'veille'
+  },
+  {
+    id: 'ecosort',
+    image: ecosortLogin,
+    gallery: [ecosortPremiereConnexion, ecosortTableauDeBord],
+    preview: { width: 1280, height: 720 },
+    stack: ['React', 'JavaScript', 'Tailwind CSS'],
+    status: 'completed',
+    link: 'https://github.com/TheVisitor-coding/eco_sort',
+    icon: 'ecosort'
+  }
+]
+
 export {
   services,
   technologies,
@@ -474,5 +584,6 @@ export {
   studies,
   studiesEn,
   projects,
-  certifications
+  certifications,
+  personalProjectsMeta
 }

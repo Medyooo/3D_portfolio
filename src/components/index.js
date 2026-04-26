@@ -8,6 +8,7 @@ import Works from './Works'
 import Contact from './Contact'
 import Studies from './Studies'
 import Certifications from './Certifications'
+import PersonalProjects from './PersonalProjects'
 
 export {
   Hero,
@@ -18,6 +19,7 @@ export {
   Works,
   Studies,
   Certifications,
+  PersonalProjects,
   Contact,
   EarthCanvas,
   BallCanvas
