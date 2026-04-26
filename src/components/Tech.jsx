@@ -15,9 +15,16 @@ import { t } from '../constants/translations'
 import { styles } from '../styles'
 import { textVariant, fadeIn } from '../utils/motion'
 
-const HOVER_WHITE = 'rgba(255,255,245,0.95)'
-const MUTED_WHITE = 'rgba(255,255,255,0.35)'
 const GLOW = '0 0 25px rgba(255,255,245,0.25), 0 0 50px rgba(255,255,245,0.15), inset 0 0 15px rgba(255,255,245,0.1)'
+
+/** Couleurs de marque pour les icônes Simple Icons (currentColor) — fond sombre */
+const BRAND_COLOR_BY_NAME = {
+  'Next.js': '#f4f4f5',
+  'Nuxt.js': '#00dc82',
+  'GitLab CI/CD': '#fc6d26',
+  'GitHub Actions': '#2088ff',
+  Nginx: '#29a03d'
+}
 
 const techCategories = [
   {
@@ -65,12 +72,13 @@ const techCategories = [
 
 const hoverGlowStyle = {
   boxShadow: GLOW,
-  border: `1px solid ${HOVER_WHITE}`
+  border: '1px solid rgba(255,255,245,0.7)'
 }
 
 const TechIcon = ({ tech, index }) => {
   const IconComponent = tech.Icon
   const imgSize = tech.large ? 'w-16 h-16' : 'w-12 h-12'
+  const brand = BRAND_COLOR_BY_NAME[tech.name]
 
   return (
     <motion.div
@@ -79,8 +87,8 @@ const TechIcon = ({ tech, index }) => {
     >
       <div className='relative w-20 h-20 rounded-2xl flex items-center justify-center
                       bg-white/[0.06] border border-white/10
-                      transition-all duration-300 ease-out
-                      group-hover:border-transparent group-hover:scale-110'>
+                      transition-transform duration-300 ease-out
+                      group-hover:scale-110 group-hover:border-white/20'>
         <div
           className='absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100
                      transition-opacity duration-300 pointer-events-none'
@@ -89,25 +97,22 @@ const TechIcon = ({ tech, index }) => {
         {IconComponent
           ? (
             <IconComponent
-              className='w-11 h-11 transition-all duration-300 ease-out
-                         group-hover:drop-shadow-[0_0_8px_rgba(255,255,245,0.4)]'
-              style={{ color: MUTED_WHITE }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = HOVER_WHITE }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = MUTED_WHITE }}
+              className='w-11 h-11 drop-shadow-sm transition-transform duration-300 group-hover:scale-105'
+              style={{ color: brand ?? 'rgba(248,250,252,0.92)' }}
+              aria-hidden
             />
             )
           : (
             <img
               src={tech.icon}
               alt={tech.name}
-              className={`${imgSize} object-contain opacity-50 grayscale transition-all duration-300 ease-out
-                          group-hover:opacity-100 group-hover:grayscale-0
-                          group-hover:drop-shadow-[0_0_8px_rgba(255,255,245,0.4)]`}
+              className={`${imgSize} object-contain
+                          transition-transform duration-300 group-hover:scale-105
+                          [filter:drop-shadow(0_1px_2px_rgba(0,0,0,0.25))]`}
             />
             )}
       </div>
-      <span className='text-xs text-white/40 group-hover:text-white/90
-                        transition-colors duration-300 text-center leading-tight max-w-[80px]'>
+      <span className='text-xs text-white/85 text-center leading-tight max-w-[80px]'>
         {tech.name}
       </span>
     </motion.div>
