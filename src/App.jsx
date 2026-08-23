@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react'
 import { BrowserRouter } from 'react-router-dom'
 import {
   About,
@@ -15,6 +16,7 @@ import {
 const App = () => {
   return (
     <BrowserRouter>
+      <Analytics />
       <div className='relative z-0 bg-bgColor'>
         <header className='relative bg-hero-pattern bg-cover bg-no-repeat bg-center overflow-hidden'>
           <Navbar />
