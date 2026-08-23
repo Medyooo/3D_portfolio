@@ -113,6 +113,7 @@ export const translations = {
       subtitle: 'Auto-formation & cours en ligne',
       title: 'Certifications',
       list: [
+        { name: 'GENERATIVE AI FOR SOFTWARE DEVELOPERS', description: 'Microsoft - Spécialisation Generative AI for Software Developers.' },
         { name: 'JAVA INTERMEDIATE', description: 'Certification SoloLearn - Java intermédiaire.' },
         { name: 'JAVASCRIPT INTERMEDIATE', description: 'Certification SoloLearn - Auto-formation en JavaScript.' },
         { name: 'SQL INTERMEDIATE', description: 'Certification SoloLearn - Maîtrise des bases SQL.' },
@@ -264,6 +265,7 @@ export const translations = {
       subtitle: 'Self-training & online courses',
       title: 'Certifications',
       list: [
+        { name: 'GENERATIVE AI FOR SOFTWARE DEVELOPERS', description: 'Microsoft - Generative AI for Software Developers specialization.' },
         { name: 'JAVA INTERMEDIATE', description: 'SoloLearn Certification - Java Intermediate.' },
         { name: 'JAVASCRIPT INTERMEDIATE', description: 'SoloLearn Certification - JavaScript self-training.' },
         { name: 'SQL INTERMEDIATE', description: 'SoloLearn Certification - SQL fundamentals.' },

@@ -12,7 +12,6 @@ import {
   reactjs,
   nodejs,
   mongodb,
-  git,
   springboot,
   agile,
   sqlsl,
@@ -24,14 +23,10 @@ import {
   php,
   mysql,
   expressjs,
-  carrent,
-  jobit,
-  tripguide,
   medtradingDashboard,
   medtradingLogin,
   medtradingTrades,
   medtradingNouveauTrade,
-  medtradingPaires,
   medtradingAnalyse,
   secoursplusLanding,
   secoursplusCours,
@@ -47,6 +42,7 @@ import {
   java,
   enedis,
   jdm,
+  microsoftcert,
   pi, ubo, mds, epsi
 } from '../assets'
 
@@ -320,6 +316,12 @@ const studiesEn = [
 
 const certifications = [
   {
+    name: 'GENERATIVE AI FOR SOFTWARE DEVELOPERS',
+    description: 'Microsoft - Spécialisation Generative AI for Software Developers.',
+    image: microsoftcert,
+    source_code_link: ''
+  },
+  {
     name: 'JAVA INTERMEDIATE',
     description: 'Certification SoloLearn - Java intermédiaire.',
     image: javasl,
@@ -358,134 +360,6 @@ const certifications = [
   }
 ]
 
-const projects = [
-  {
-    name: 'Car Rent',
-    description:
-        'Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.',
-    tags: [
-      {
-        name: 'react',
-        color: 'text-white'
-      },
-      {
-        name: 'mongodb',
-        color: 'text-white'
-      },
-      {
-        name: 'tailwind',
-        color: 'text-white'
-      }
-    ],
-    image: carrent,
-    source_code_link: 'https://github.com/'
-  },
-  {
-    name: 'Job IT',
-    description:
-        'Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.',
-    tags: [
-      {
-        name: 'react',
-        color: 'text-white'
-      },
-      {
-        name: 'restapi',
-        color: 'text-white'
-      },
-      {
-        name: 'scss',
-        color: 'text-white'
-      }
-    ],
-    image: jobit,
-    source_code_link: 'https://github.com/'
-  },
-  {
-    name: 'Trip Guide',
-    description:
-        'A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.',
-    tags: [
-      {
-        name: 'nextjs',
-        color: 'text-white'
-      },
-      {
-        name: 'supabase',
-        color: 'text-white'
-      },
-      {
-        name: 'css',
-        color: 'text-white'
-      }
-    ],
-    image: tripguide,
-    source_code_link: 'https://github.com/'
-  },
-  {
-    name: 'Trip Guide',
-    description:
-        'A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.',
-    tags: [
-      {
-        name: 'nextjs',
-        color: 'text-white'
-      },
-      {
-        name: 'supabase',
-        color: 'text-white'
-      },
-      {
-        name: 'css',
-        color: 'text-white'
-      }
-    ],
-    image: tripguide,
-    source_code_link: 'https://github.com/'
-  },
-  {
-    name: 'Trip Guide',
-    description:
-        'A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.',
-    tags: [
-      {
-        name: 'nextjs',
-        color: 'text-white'
-      },
-      {
-        name: 'supabase',
-        color: 'text-white'
-      },
-      {
-        name: 'css',
-        color: 'text-white'
-      }
-    ],
-    image: tripguide,
-    source_code_link: 'https://github.com/'
-  },
-  {
-    name: 'Trip Guide',
-    description:
-        'A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.',
-    tags: [
-      {
-        name: 'nextjs',
-        color: 'text-white'
-      },
-      {
-        name: 'supabase',
-        color: 'text-white'
-      },
-      {
-        name: 'css',
-        color: 'text-white'
-      }
-    ],
-    image: tripguide,
-    source_code_link: 'https://github.com/'
-  }
-]
 
 const personalProjectsMeta = [
   {
@@ -495,10 +369,8 @@ const personalProjectsMeta = [
       medtradingDashboard,
       medtradingTrades,
       medtradingNouveauTrade,
-      medtradingPaires,
       medtradingAnalyse
     ],
-    /** Dimensions natives des captures (viewport app) — ratio pour mise en page */
     preview: { width: 1000, height: 541 },
     stack: [
       'React',
@@ -583,7 +455,6 @@ export {
   experiencesEn,
   studies,
   studiesEn,
-  projects,
   certifications,
   personalProjectsMeta
 }

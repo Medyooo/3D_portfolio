@@ -22,7 +22,8 @@ import javasl from './javaintermediate.png'
 import phpsl from './phpsl.png'
 import sqlsl from './sqlsl.jpg'
 import agile from './agile.png'
-import mohamedPortrait from './mohamed-portrait.png'
+import microsoftcert from './microsoftcert.png'
+import mohamedPortrait from './mohamed-portrait.jpeg'
 
 
 
@@ -60,21 +61,10 @@ import redux from './tech/redux.png'
 import threejs from './tech/threejs.svg'
 
 
-
-import meta from './company/meta.png'
-import shopify from './company/shopify.png'
-import starbucks from './company/starbucks.png'
-import tesla from './company/tesla.png'
-
-import carrent from './carrent.png'
-import jobit from './jobit.png'
-import tripguide from './tripguide.png'
-
 import medtradingLogin from './projects/medtrading-login.png'
 import medtradingDashboard from './projects/medtrading-dashboard.png'
 import medtradingTrades from './projects/medtrading-trades.png'
 import medtradingNouveauTrade from './projects/medtrading-nouveau-trade.png'
-import medtradingPaires from './projects/medtrading-paires.png'
 import medtradingAnalyse from './projects/medtrading-analyse.png'
 
 import secoursplusLanding from './projects/secoursplus-landing.png'
@@ -101,6 +91,7 @@ export {
   postgresql,
   symfony,
   agile,
+  microsoftcert,
   php,
   mysql,
   jest,
@@ -137,19 +128,11 @@ export {
   java,
   redux,
   threejs,
-  meta,
   anssi,
-  shopify,
-  starbucks,
-  tesla,
-  carrent,
-  jobit,
-  tripguide,
   medtradingLogin,
   medtradingDashboard,
   medtradingTrades,
   medtradingNouveauTrade,
-  medtradingPaires,
   medtradingAnalyse,
   secoursplusLanding,
   secoursplusCours,
