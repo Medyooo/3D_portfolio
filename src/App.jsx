@@ -8,7 +8,8 @@ import {
   Studies,
   Certifications,
   Tech,
-  PersonalProjects
+  PersonalProjects,
+  Footer
 } from './components'
 
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
             <Contact />
           </div>
         </main>
+        <Footer />
       </div>
     </BrowserRouter>
   )

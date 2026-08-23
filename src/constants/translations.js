@@ -134,6 +134,13 @@ export const translations = {
       sending: 'Envoi en cours...',
       closeLabel: 'Fermer la notification'
     },
+    footer: {
+      tagline: 'Développeur full-stack orienté qualité, sécurité et expériences web modernes.',
+      navigation: 'Navigation',
+      contact: 'Liens',
+      backToTop: 'Retour en haut',
+      copyright: '© {year} Mohamed Larbi EL BAIDI. Tous droits réservés.'
+    },
     viewSource: 'Voir le code source',
     notifications: {
       fillAll: 'Veuillez remplir tous les champs du formulaire.',
@@ -278,6 +285,13 @@ export const translations = {
       sending: 'Sending...',
       closeLabel: 'Close notification'
     },
+    footer: {
+      tagline: 'Full-stack developer focused on quality, security, and modern web experiences.',
+      navigation: 'Navigation',
+      contact: 'Links',
+      backToTop: 'Back to top',
+      copyright: '© {year} Mohamed Larbi EL BAIDI. All rights reserved.'
+    },
     viewSource: 'View source code',
     notifications: {
       fillAll: 'Please fill in all form fields.',
@@ -289,11 +303,15 @@ export const translations = {
   }
 }
 
-export const t = (lang, key) => {
+export const t = (lang, key, params = {}) => {
   const keys = key.split('.')
   let value = translations[lang]
   for (const k of keys) {
     value = value?.[k]
   }
-  return value ?? key
+  if (typeof value !== 'string') return value ?? key
+
+  return value.replace(/\{(\w+)\}/g, (_, token) => (
+    Object.prototype.hasOwnProperty.call(params, token) ? String(params[token]) : `{${token}}`
+  ))
 }
