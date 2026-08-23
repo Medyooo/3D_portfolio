@@ -21,7 +21,7 @@ const Hero = () => {
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white`}>{t(language, 'hero.role')}</p>
           <motion.a
-            href='/cv.pdf'
+            href='/cv-med.pdf'
             download='M-larbi_el-baidi-CV.pdf'
             className='mt-6 px-6 py-3 rounded-xl bg-white text-[#9F2808] font-bold shadow-lg hover:bg-primary hover:text-white transition-colors'
             whileHover={{ scale: 1.05 }}
