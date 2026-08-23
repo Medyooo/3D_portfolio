@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { FaGithub } from 'react-icons/fa'
+import { LuLink } from 'react-icons/lu'
 
 import { styles } from '../styles'
 import { navLinks } from '../constants'
@@ -7,12 +9,15 @@ import { logo, menu, close } from '../assets'
 import { useLanguage } from '../context/LanguageContext'
 import { t } from '../constants/translations'
 
+const githubProfileUrl = 'https://github.com/Medyooo'
+
 const Navbar = () => {
   const [active, SetActive] = useState('')
   const [toggle, setToggle] = useState(false)
   const { language, setLanguage } = useLanguage()
 
   const navTitle = (link) => t(language, 'nav.' + link.id)
+  const githubLabel = language === 'fr' ? 'Mon GitHub' : 'My GitHub'
 
   return (
     <nav className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 brown-gradient`}>
@@ -40,6 +45,19 @@ const Navbar = () => {
               <a href={`#${link.id}`}>{navTitle(link)}</a>
             </li>
           ))}
+          <li>
+            <a
+              href={githubProfileUrl}
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label={githubLabel}
+              className='inline-flex items-center gap-2 text-[18px] font-medium text-primary transition-colors hover:text-orange'
+            >
+              <FaGithub className='h-[18px] w-[18px]' aria-hidden='true' />
+              <span>GitHub</span>
+              <LuLink className='h-4 w-4' aria-hidden='true' />
+            </a>
+          </li>
           <li className='flex items-center gap-1 ml-2'>
             <button
               type='button'
@@ -125,6 +143,20 @@ const Navbar = () => {
                 </a>
               </li>
             ))}
+              <li className='list-none'>
+                <a
+                  href={githubProfileUrl}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  aria-label={githubLabel}
+                  className='font-poppins font-medium text-[16px] text-primary flex items-center gap-2 py-2'
+                  onClick={() => setToggle(false)}
+                >
+                  <FaGithub className='h-4 w-4' aria-hidden='true' />
+                  <span>GitHub</span>
+                  <LuLink className='h-4 w-4' aria-hidden='true' />
+                </a>
+              </li>
             </ul>
           </div>
         </div>
