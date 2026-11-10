@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion'
 import {
   SiNextdotjs, SiNuxt,
-  SiGitlab, SiGithubactions, SiNginx
+  SiGitlab, SiGithubactions, SiNginx, SiNestjs, SiGooglecloud,
+  SiTraefikproxy, SiSonarqubecloud, SiCheckmarx
 } from 'react-icons/si'
+import { FaAws } from 'react-icons/fa'
 import { SectionWrapper } from '../hoc'
 import {
   reactjs, vuejs, javascript, typescript, tailwind, bootstrap, html, css,
@@ -23,7 +25,11 @@ const BRAND_COLOR_BY_NAME = {
   'Nuxt.js': '#00dc82',
   'GitLab CI/CD': '#fc6d26',
   'GitHub Actions': '#2088ff',
-  Nginx: '#29a03d'
+  Nginx: '#29a03d',
+  NestJS: '#e0234e',
+  GCP: '#4285f4',
+  Traefik: '#24a1c1',
+  Checkmarx: '#54b848'
 }
 
 const techCategories = [
@@ -47,6 +53,7 @@ const techCategories = [
     items: [
       { name: 'Node.js', icon: nodejs },
       { name: 'Express.js', icon: expressjs },
+      { name: 'NestJS', Icon: SiNestjs },
       { name: 'Adonis.js', icon: adonis },
       { name: 'Java', icon: java, large: true },
       { name: 'Spring Boot', icon: springboot },
@@ -65,7 +72,12 @@ const techCategories = [
       { name: 'Git', icon: git },
       { name: 'GitLab CI/CD', Icon: SiGitlab },
       { name: 'GitHub Actions', Icon: SiGithubactions },
-      { name: 'Nginx', Icon: SiNginx }
+      { name: 'Nginx', Icon: SiNginx },
+      { name: 'AWS', Icon: FaAws },
+      { name: 'GCP', Icon: SiGooglecloud },
+      { name: 'Traefik', Icon: SiTraefikproxy },
+      { name: 'SonarCloud', Icon: SiSonarqubecloud },
+      { name: 'Checkmarx', Icon: SiCheckmarx }
     ]
   }
 ]
@@ -86,9 +98,9 @@ const TechIcon = ({ tech, index }) => {
       className='group flex flex-col items-center gap-2'
     >
       <div className='relative w-20 h-20 rounded-2xl flex items-center justify-center
-                      bg-white/[0.06] border border-white/10
+                      bg-black/20
                       transition-transform duration-300 ease-out
-                      group-hover:scale-110 group-hover:border-white/20'>
+                      group-hover:scale-110 '>
         <div
           className='absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100
                      transition-opacity duration-300 pointer-events-none'
@@ -112,7 +124,7 @@ const TechIcon = ({ tech, index }) => {
             />
             )}
       </div>
-      <span className='text-xs text-white/85 text-center leading-tight max-w-[80px]'>
+      <span className='text-xs text-white text-center leading-tight max-w-[80px]'>
         {tech.name}
       </span>
     </motion.div>
@@ -124,8 +136,7 @@ const CategoryCard = ({ category, index, language }) => (
     variants={fadeIn('up', 'spring', index * 0.2, 0.75)}
     className='flex-1 min-w-[280px]'
   >
-    <div className='relative rounded-3xl p-6 h-full bg-white/[0.04]
-                    backdrop-blur-sm border border-white/10 overflow-hidden'>
+    <div className='relative rounded-3xl p-6 h-full bg-[#9F2808] overflow-hidden'>
       <div
         className='absolute top-0 left-6 right-6 h-px'
         style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,245,0.5), transparent)' }}

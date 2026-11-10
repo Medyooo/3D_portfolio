@@ -23,6 +23,7 @@ import phpsl from './phpsl.png'
 import sqlsl from './sqlsl.jpg'
 import agile from './agile.png'
 import microsoftcert from './microsoftcert.png'
+import reactcert from './reactspecialization-cert.png'
 import mohamedPortrait from './mohamed-portrait.jpeg'
 
 
@@ -92,6 +93,7 @@ export {
   symfony,
   agile,
   microsoftcert,
+  reactcert,
   php,
   mysql,
   jest,

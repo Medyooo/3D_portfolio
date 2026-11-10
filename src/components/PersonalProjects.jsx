@@ -16,7 +16,7 @@ import { useLanguage } from '../context/LanguageContext'
 import { translations } from '../constants/translations'
 import { personalProjectsMeta } from '../constants'
 import { HiChevronLeft, HiChevronRight, HiOutlineAcademicCap, HiOutlineSparkles } from 'react-icons/hi2'
-import { LuLeaf, LuNewspaper, LuTrendingUp } from 'react-icons/lu'
+import { LuGitPullRequest, LuLeaf, LuNewspaper, LuTrendingUp } from 'react-icons/lu'
 import { FaGithub } from 'react-icons/fa'
 
 const GALLERY_SWIPER_SPEED = 450
@@ -25,7 +25,7 @@ const GALLERY_AUTOPLAY_MS = 5200
 const statusVisual = {
   in_progress: 'border border-white/35 bg-white/[0.08] text-[#FCC986] shadow-[0_0_0_1px_rgba(252,201,134,0.15)]',
   completed: 'border border-white/20 bg-white/[0.06] text-white/90',
-  planned: 'border border-dashed border-white/25 bg-transparent text-white/55'
+  planned: 'border border-dashed border-white/25 bg-transparent text-white/90'
 }
 
 const SCREEN_FRAME_CLASS =
@@ -224,9 +224,9 @@ const ProjectCard = ({ project, index, tr }) => {
     <motion.article
       variants={fadeIn('up', 'spring', index * 0.12, 0.55)}
       className='group/card relative flex flex-col overflow-hidden rounded-2xl
-                 border border-white/[0.09] bg-white/[0.03] shadow-[0_12px_40px_-18px_rgba(0,0,0,0.4)]
-                 backdrop-blur-sm transition-[border-color,box-shadow] duration-200
-                 hover:border-white/[0.14] hover:shadow-[0_16px_44px_-14px_rgba(0,0,0,0.48)]'
+                 bg-[#9F2808] shadow-[0_12px_40px_-18px_rgba(0,0,0,0.4)]
+                 transition-shadow duration-200
+                 hover:shadow-[0_16px_44px_-14px_rgba(0,0,0,0.48)]'
     >
       <div className='flex flex-wrap items-start justify-between gap-2.5 px-4 pt-4 sm:px-5 sm:pt-5'>
         <div className='flex min-w-0 flex-1 items-start gap-2.5'>
@@ -251,7 +251,7 @@ const ProjectCard = ({ project, index, tr }) => {
               </h3>
               {(project.category ?? '').trim() !== '' && (
                 <span
-                  className='shrink-0 rounded-md border border-[#FCC986]/35 bg-[#FCC986]/[0.1] px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-[#FCC986]/95'
+                  className='shrink-0 rounded-md border border-[#FCC986]/35 bg-[#FCC986]/[0.1] px-2 py-0.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#FCC986]'
                   title={`${tr.categoryLabel}: ${project.category}`}
                   aria-label={`${tr.categoryLabel}: ${project.category}`}
                 >
@@ -299,12 +299,12 @@ const ProjectCard = ({ project, index, tr }) => {
       </div>
 
       <div className='flex flex-col gap-3.5 px-4 py-4 sm:gap-4 sm:px-5 sm:py-5'>
-        <p className='text-[13px] leading-relaxed text-white/72 sm:text-sm'>
+        <p className='text-[13px] leading-relaxed text-white/95 sm:text-sm'>
           {project.description}
         </p>
 
         <div>
-          <p className='mb-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/38'>
+          <p className='mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/90'>
             {tr.stackLabel}
           </p>
           <ul className='flex flex-wrap gap-1.5' aria-label={tr.stackLabel}>
@@ -378,6 +378,80 @@ const ProjectCard = ({ project, index, tr }) => {
   )
 }
 
+const RECHARTS = {
+  repo: 'https://github.com/recharts/recharts',
+  prs: 'https://github.com/recharts/recharts/pulls?q=is%3Apr+author%3AMedyooo+is%3Amerged',
+  fallbackDownloads: 64000000,
+  stars: 27700,
+  mergedPrs: 5
+}
+
+const useWeeklyDownloads = () => {
+  const [downloads, setDownloads] = useState(RECHARTS.fallbackDownloads)
+  useEffect(() => {
+    const controller = new AbortController()
+    fetch('https://api.npmjs.org/downloads/point/last-week/recharts', { signal: controller.signal })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => { if (d && typeof d.downloads === 'number') setDownloads(d.downloads) })
+      .catch(() => {})
+    return () => controller.abort()
+  }, [])
+  return downloads
+}
+
+const StatBlock = ({ value, label }) => (
+  <div className='flex flex-col items-center rounded-xl bg-black/20 px-4 py-3 text-center'>
+    <span className='text-2xl font-bold text-[#FCC986] sm:text-3xl'>{value}</span>
+    <span className='mt-1 text-xs uppercase tracking-wider text-white/90'>{label}</span>
+  </div>
+)
+
+const ContributionCard = ({ tr, language }) => {
+  const c = tr.contribution
+  const downloads = useWeeklyDownloads()
+  const fmt = new Intl.NumberFormat(language === 'fr' ? 'fr-FR' : 'en-US', { notation: 'compact', maximumFractionDigits: 1 })
+  const linkClass =
+    'inline-flex w-fit items-center gap-2 text-[13px] font-semibold text-primary underline-offset-4 ' +
+    'transition-colors hover:text-white hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:text-sm'
+
+  return (
+    <motion.article
+      variants={fadeIn('up', 'spring', 0.1, 0.55)}
+      className='mx-auto mt-12 w-full max-w-6xl rounded-2xl bg-[#9F2808] p-5 sm:p-6
+                 shadow-[0_12px_40px_-18px_rgba(0,0,0,0.4)]'
+    >
+      <div className='flex flex-wrap items-center gap-2.5'>
+        <span className='flex h-10 w-10 items-center justify-center rounded-lg bg-white/[0.06] text-[#FCC986]' aria-hidden>
+          <LuGitPullRequest className='h-5 w-5' />
+        </span>
+        <h3 className='text-lg font-semibold tracking-tight text-white sm:text-xl'>recharts</h3>
+        <span className='rounded-md border border-[#FCC986]/35 bg-[#FCC986]/[0.1] px-2 py-0.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#FCC986]'>
+          {c.badge}
+        </span>
+      </div>
+
+      <p className='mt-4 text-[13px] leading-relaxed text-white/95 sm:text-sm'>{c.description}</p>
+
+      <div className='mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3'>
+        <StatBlock value={`${fmt.format(downloads)}+`} label={c.downloads} />
+        <StatBlock value={`${fmt.format(RECHARTS.stars)}+`} label={c.stars} />
+        <StatBlock value={RECHARTS.mergedPrs} label={c.prs} />
+      </div>
+
+      <div className='mt-5 flex flex-wrap gap-x-6 gap-y-2'>
+        <a href={RECHARTS.repo} target='_blank' rel='noopener noreferrer' className={linkClass}>
+          <FaGithub className='h-4 w-4 shrink-0' aria-hidden />
+          {c.viewRepo}
+        </a>
+        <a href={RECHARTS.prs} target='_blank' rel='noopener noreferrer' className={linkClass}>
+          <LuGitPullRequest className='h-4 w-4 shrink-0' aria-hidden />
+          {c.viewPrs}
+        </a>
+      </div>
+    </motion.article>
+  )
+}
+
 const PersonalProjects = () => {
   const { language } = useLanguage()
   const tr = translations[language].personalProjects
@@ -394,7 +468,9 @@ const PersonalProjects = () => {
         <h2 className={styles.sectionHeadText}>{tr.title}</h2>
       </motion.div>
 
-      <div className='mx-auto mt-12 grid w-full max-w-6xl grid-cols-1 gap-7 sm:gap-8 lg:grid-cols-2 lg:gap-6'>
+      <ContributionCard tr={tr} language={language} />
+
+      <div className='mx-auto mt-8 grid w-full max-w-6xl grid-cols-1 gap-7 sm:gap-8 lg:grid-cols-2 lg:gap-6'>
         {projects.map((project, index) => (
           <ProjectCard key={project.id} project={project} index={index} tr={tr} />
         ))}

@@ -43,6 +43,7 @@ import {
   enedis,
   jdm,
   microsoftcert,
+  reactcert,
   pi, ubo, mds, epsi
 } from '../assets'
 
@@ -149,7 +150,7 @@ const experiences = [
     company_name: 'Enedis Lab — Nantes',
     icon: enedis,
     iconBg: '#ffff',
-    date: 'Sept 2024 – Présent',
+    date: 'Sept 2024 – Oct 2026',
     points: [
       'Conception et développement d’applications web en Symfony (PHP) et d’APIs sécurisées en Node.js / Adonis.js (TypeScript).',
       'Intégration front-end avec Vue.js, Nuxt.js et Twig.',
@@ -236,7 +237,7 @@ const experiencesEn = [
     company_name: 'Enedis Lab — Nantes',
     icon: enedis,
     iconBg: '#ffff',
-    date: 'Sept 2024 – Present',
+    date: 'Sept 2024 – Oct 2026',
     points: [
       'Design and development of web applications in Symfony (PHP) and secure APIs in Node.js / Adonis.js (TypeScript).',
       'Front-end integration with Vue.js, Nuxt.js and Twig.',
@@ -315,6 +316,12 @@ const studiesEn = [
 ]
 
 const certifications = [
+  {
+    name: 'REACT SPECIALIZATION',
+    description: 'Meta - Spécialisation Meta React : React Basics et Advanced React.',
+    image: reactcert,
+    source_code_link: ''
+  },
   {
     name: 'GENERATIVE AI FOR SOFTWARE DEVELOPERS',
     description: 'Microsoft - Spécialisation Generative AI for Software Developers.',

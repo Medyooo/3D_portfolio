@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { FaGithub } from 'react-icons/fa'
 import { LuLink } from 'react-icons/lu'
 
-import { styles } from '../styles'
 import { navLinks } from '../constants'
 import { logo, menu, close } from '../assets'
 import { useLanguage } from '../context/LanguageContext'
@@ -20,26 +19,26 @@ const Navbar = () => {
   const githubLabel = language === 'fr' ? 'Mon GitHub' : 'My GitHub'
 
   return (
-    <nav className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 brown-gradient`}>
+    <nav className={`px-6 xl:px-16 w-full flex items-center py-5 fixed top-0 z-20 brown-gradient`}>
       <div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
         <Link
           to='/'
-          className='flex items-center gap-2'
+          className='flex items-center gap-2 shrink-0'
           onClick={() => {
             SetActive('')
             window.scrollTo(0, 0)
           }}
         >
-          <img src={logo} alt='Logo' className='w-40 h-11 object-contain' />
+          <img src={logo} alt='Logo' className='w-40 h-11 object-contain shrink-0' />
         </Link>
 
-        <ul className='list-none hidden sm:flex flex-row gap-10 items-center'>
+        <ul className='list-none hidden lg:flex flex-row gap-5 xl:gap-10 items-center whitespace-nowrap'>
           {navLinks.map((link) => (
             <li
               key={link.id}
               className={`${
                 active === navTitle(link) ? 'text-secondary' : 'text-primary'
-              } hover:text-orange text-[18px] font-medium cursor-pointer`}
+              } hover:text-orange text-[14px] xl:text-[18px] font-medium cursor-pointer`}
               onClick={() => SetActive(navTitle(link))}
             >
               <a href={`#${link.id}`}>{navTitle(link)}</a>
@@ -51,7 +50,7 @@ const Navbar = () => {
               target='_blank'
               rel='noopener noreferrer'
               aria-label={githubLabel}
-              className='inline-flex items-center gap-2 text-[18px] font-medium text-primary transition-colors hover:text-orange'
+              className='inline-flex items-center gap-2 text-[14px] xl:text-[18px] font-medium text-primary transition-colors hover:text-orange'
             >
               <FaGithub className='h-[18px] w-[18px]' aria-hidden='true' />
               <span>GitHub</span>
@@ -84,7 +83,7 @@ const Navbar = () => {
           </li>
         </ul>
 
-        <div className='sm:hidden flex flex-1 justify-end items-center gap-3'>
+        <div className='lg:hidden flex flex-1 justify-end items-center gap-3'>
           <div className='flex items-center gap-1'>
             <button
               type='button'

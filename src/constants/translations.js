@@ -3,7 +3,7 @@ export const translations = {
     nav: {
       about: 'À propos',
       experiences: 'Expérience',
-      projects: 'Projets perso',
+      projects: 'Projets',
       studies: 'Formation',
       certification: 'Certifications',
       contact: 'Contact'
@@ -42,8 +42,8 @@ export const translations = {
       cicd: 'CI/CD & DevOps'
     },
     personalProjects: {
-      subtitle: 'RÉALISATIONS & EXPÉRIMENTATIONS',
-      title: 'Projets personnels',
+      subtitle: 'RÉALISATIONS, EXPÉRIMENTATIONS & OPEN SOURCE',
+      title: 'Projets perso & contributions',
       stackLabel: 'Stack',
       galleryLabel: 'Aperçus',
       clickToEnlarge: 'Cliquer pour agrandir',
@@ -56,6 +56,16 @@ export const translations = {
         in_progress: 'En cours',
         completed: 'Terminé',
         planned: 'À venir'
+      },
+      contribution: {
+        badge: 'Open source',
+        description:
+          'Contributeur open source de recharts, la bibliothèque de graphiques React la plus utilisée : corrections de bugs (alignement de la grille CartesianGrid avec les labels d’axe) et amélioration de la documentation des composants (Sector, Brush, Polygon, tickFormatter, Tooltip). 5 pull requests fusionnées.',
+        downloads: 'téléchargements / semaine',
+        stars: 'étoiles GitHub',
+        prs: 'PR fusionnées',
+        viewRepo: 'Voir le dépôt',
+        viewPrs: 'Voir mes pull requests'
       },
       itemsById: {
         medtrading: {
@@ -113,6 +123,7 @@ export const translations = {
       subtitle: 'Auto-formation & cours en ligne',
       title: 'Certifications',
       list: [
+        { name: 'REACT SPECIALIZATION', description: 'Meta - Spécialisation Meta React : React Basics et Advanced React.' },
         { name: 'GENERATIVE AI FOR SOFTWARE DEVELOPERS', description: 'Microsoft - Spécialisation Generative AI for Software Developers.' },
         { name: 'JAVA INTERMEDIATE', description: 'Certification SoloLearn - Java intermédiaire.' },
         { name: 'JAVASCRIPT INTERMEDIATE', description: 'Certification SoloLearn - Auto-formation en JavaScript.' },
@@ -155,7 +166,7 @@ export const translations = {
     nav: {
       about: 'About',
       experiences: 'Experience',
-      projects: 'Side projects',
+      projects: 'Projects',
       studies: 'Education',
       certification: 'Certifications',
       contact: 'Contact'
@@ -194,8 +205,8 @@ export const translations = {
       cicd: 'CI/CD & DevOps'
     },
     personalProjects: {
-      subtitle: 'BUILD & EXPERIMENTATION',
-      title: 'Personal projects',
+      subtitle: 'BUILD, EXPERIMENTATION & OPEN SOURCE',
+      title: 'Personal projects & contributions',
       stackLabel: 'Stack',
       galleryLabel: 'Screenshots',
       clickToEnlarge: 'Click to enlarge',
@@ -208,6 +219,16 @@ export const translations = {
         in_progress: 'In progress',
         completed: 'Completed',
         planned: 'Planned'
+      },
+      contribution: {
+        badge: 'Open source',
+        description:
+          'Open source contributor to recharts, the most widely used React charting library: bug fix (CartesianGrid lines aligned with axis tick labels) and documentation improvements (Sector, Brush, Polygon, tickFormatter, Tooltip). 5 merged pull requests.',
+        downloads: 'downloads / week',
+        stars: 'GitHub stars',
+        prs: 'merged PRs',
+        viewRepo: 'View repository',
+        viewPrs: 'View my pull requests'
       },
       itemsById: {
         medtrading: {
@@ -265,6 +286,7 @@ export const translations = {
       subtitle: 'Self-training & online courses',
       title: 'Certifications',
       list: [
+        { name: 'REACT SPECIALIZATION', description: 'Meta - Meta React Specialization: React Basics and Advanced React.' },
         { name: 'GENERATIVE AI FOR SOFTWARE DEVELOPERS', description: 'Microsoft - Generative AI for Software Developers specialization.' },
         { name: 'JAVA INTERMEDIATE', description: 'SoloLearn Certification - Java Intermediate.' },
         { name: 'JAVASCRIPT INTERMEDIATE', description: 'SoloLearn Certification - JavaScript self-training.' },
